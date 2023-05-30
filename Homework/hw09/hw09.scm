@@ -1,4 +1,6 @@
-(define (ascending? asc-lst) 'YOUR-CODE-HERE)
+(define (ascending? asc-lst) 
+    
+)
 
 (define (my-filter pred s) 'YOUR-CODE-HERE)
 
