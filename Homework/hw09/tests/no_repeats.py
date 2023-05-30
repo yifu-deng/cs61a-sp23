@@ -7,51 +7,46 @@ test = {
         {
           'code': r"""
           scm> (no-repeats '(5 4 3 2 1))
-          7772672b0d7983fcad285ba36fdb9e60
-          # locked
+          (5 4 3 2 1)
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           scm> (no-repeats '(5 4 3 2 1 1))
-          7772672b0d7983fcad285ba36fdb9e60
-          # locked
+          (5 4 3 2 1)
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           scm> (no-repeats '(5 5 4 3 2 1))
-          7772672b0d7983fcad285ba36fdb9e60
-          # locked
+          (5 4 3 2 1)
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           scm> (no-repeats '(12))
-          8b2130ac87026f9d03c15c5b6e94ff0c
-          # locked
+          (12)
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           scm> (no-repeats '(1 1 1 1 1 1))
-          41b46952e8febc14ae103a14b6edee11
-          # locked
+          (1)
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         }
       ],
@@ -67,27 +62,23 @@ test = {
         {
           'code': r"""
           scm> (no-repeats (list 5 4 2))
-          f548fc04dff3c01f20060ee2a960e786
-          # locked
+          (5 4 2)
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           scm> (no-repeats (list 5 4 5 4 2 2))
-          f548fc04dff3c01f20060ee2a960e786
-          # locked
+          (5 4 2)
           scm> (no-repeats (list 5 5 5 5 5))
-          ad7b77cde813c2a412843ac391a89a34
-          # locked
+          (5)
           scm> (no-repeats ())
-          010af2cd1e765be62ece0c49314e61bd
-          # locked
+          ()
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         }
       ],
