@@ -15,20 +15,20 @@ def calc_eval(exp):
     3
     """
     if isinstance(exp, Pair):
-        operator = ____________  # UPDATE THIS FOR Q3
-        operands = ____________  # UPDATE THIS FOR Q3
+        operator = exp.first  # UPDATE THIS FOR Q3
+        operands = exp.rest  # UPDATE THIS FOR Q3
         if operator == 'and':  # and expressions
             return eval_and(operands)
         elif operator == 'define':  # define expressions
             return eval_define(operands)
         else:  # Call expressions
-            return calc_apply(___________, ___________)  # UPDATE THIS FOR Q3
+            return calc_apply(calc_eval(operator), operands.map(calc_eval))
     elif exp in OPERATORS:   # Looking up procedures
         return OPERATORS[exp]
     elif isinstance(exp, int) or isinstance(exp, bool):   # Numbers and booleans
         return exp
-    elif _________________:  # CHANGE THIS CONDITION FOR Q5
-        return _________________  # UPDATE THIS FOR Q5
+    elif exp in bindings:  # CHANGE THIS CONDITION FOR Q5
+        return bindings[exp]  # UPDATE THIS FOR Q5
 
 
 def calc_apply(op, args):
@@ -53,6 +53,13 @@ def floor_div(expr):
     3
     """
     # BEGIN SOLUTION Q3
+    result = expr.first
+    expr = expr.rest
+    while expr is not nil:
+        result = result // expr.first
+        expr = expr.rest
+    return result
+    # END SOLUTION
 
 
 def eval_and(operands):
@@ -73,6 +80,13 @@ def eval_and(operands):
     True
     """
     # BEGIN SOLUTION Q4
+    curr, value = operands, True
+    while curr is not nil:
+        value = calc_eval(curr.first)
+        if value is False:
+            return False
+        curr = curr.rest
+    return value
 
 
 bindings = {}
@@ -94,6 +108,9 @@ def eval_define(expr):
     2
     """
     # BEGIN SOLUTION Q5
+    key, value = expr.first, calc_eval(expr.rest.first)
+    bindings[key] = value
+    return key
 
 
 OPERATORS = {"//": floor_div, "+": addition, "-": subtraction, "*": multiplication, "/": division}
