@@ -28,7 +28,7 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
 
     # All non-atomic expressions are lists (combinations)
     if not scheme_listp(expr):
-        raise SchemeError('malformed list: {0}'.format(repl_str(expr)))
+        raise SchemeError("malformed list: {0}".format(repl_str(expr)))
     first, rest = expr.first, expr.rest
     if scheme_symbolp(first) and first in scheme_forms.SPECIAL_FORMS:
         return scheme_forms.SPECIAL_FORMS[first](rest, env)
@@ -43,17 +43,24 @@ def scheme_apply(procedure, args, env):
     Frame ENV, the current environment."""
     validate_procedure(procedure)
     if not isinstance(env, Frame):
-       assert False, "Not a Frame: {}".format(env)
+        assert False, "Not a Frame: {}".format(env)
     if isinstance(procedure, BuiltinProcedure):
         # BEGIN PROBLEM 2
         "*** YOUR CODE HERE ***"
+        args_list = []
+        while args != nil:
+            args_list.append(args.first)
+            args = args.rest
+        if procedure.need_env:
+            args_list.append(env)
         # END PROBLEM 2
         try:
             # BEGIN PROBLEM 2
             "*** YOUR CODE HERE ***"
+            return procedure.py_func(*args_list)
             # END PROBLEM 2
         except TypeError as err:
-            raise SchemeError('incorrect number of arguments: {0}'.format(procedure))
+            raise SchemeError("incorrect number of arguments: {0}".format(procedure))
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
         "*** YOUR CODE HERE ***"
@@ -82,7 +89,9 @@ def eval_all(expressions, env):
     2
     """
     # BEGIN PROBLEM 6
-    return scheme_eval(expressions.first, env)  # replace this with lines of your own code
+    return scheme_eval(
+        expressions.first, env
+    )  # replace this with lines of your own code
     # END PROBLEM 6
 
 
