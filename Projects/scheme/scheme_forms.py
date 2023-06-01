@@ -52,13 +52,13 @@ def do_define_form(expressions, env):
         # BEGIN PROBLEM 10
         "*** YOUR CODE HERE ***"
         # constructing a named procedure using lambda expression
-        symbol = signature.first
+        name = signature.first
         formals = signature.rest
         body = expressions.rest
         expr_lambda = Pair(formals, body)
         lamb_proc = do_lambda_form(expr_lambda, env)
-        env.define(symbol, lamb_proc)
-        return symbol
+        env.define(name, lamb_proc)
+        return name
         # END PROBLEM 10
     else:
         bad_signature = signature.first if isinstance(signature, Pair) else signature
@@ -230,6 +230,14 @@ def make_let_frame(bindings, env):
     names = vals = nil
     # BEGIN PROBLEM 14
     "*** YOUR CODE HERE ***"
+    while bindings is not nil:
+        validate_form(bindings.first, 2, 2)
+        name = bindings.first.first
+        val = scheme_eval(bindings.first.rest.first, env)
+        names = Pair(name, names)
+        vals = Pair(val, vals)
+        bindings = bindings.rest
+    validate_formals(names)
     # END PROBLEM 14
     return env.make_child_frame(names, vals)
 
