@@ -67,6 +67,7 @@ def do_quote_form(expressions, env):
     validate_form(expressions, 1, 1)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    return expressions.first
     # END PROBLEM 5
 
 
