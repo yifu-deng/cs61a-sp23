@@ -37,7 +37,7 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
         "*** YOUR CODE HERE ***"
         operator = scheme_eval(first, env)
         operands = rest.map(lambda operand: scheme_eval(operand, env))
-        return complete_apply(operator, operands, env)
+        return scheme_apply(operator, operands, env)
         # END PROBLEM 3
 
 
