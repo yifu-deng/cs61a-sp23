@@ -20,4 +20,4 @@ A complete list of lecture topics, readings, and assignments appears in the [lec
 - [Course Website (2023 Spring)](https://cs61a.org/)
 - [Textbook (Composing Programs)](http://composingprograms.com/pages/11-getting-started.html)
 - [Python Tutor](https://pythontutor.com/visualize.html#mode=edit)
-- [Online editor (support scheme, SQL and python)](https://code.cs61a.org)
+- [Online editor (Support Scheme, SQL and Python)](https://code.cs61a.org)
