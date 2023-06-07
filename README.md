@@ -1,4 +1,4 @@
-This is the repository for CS61A(Spring2023), the first course of CS major in UC Berkeley.
+> ***This is the repository for CS61A(Spring2023), the first course of CS major in UC Berkeley.***
 
 ### Overview
 
